@@ -1,9 +1,9 @@
+import { CoursesService } from './../../../shared/services';
 import { CourseCategory, CourseLevel } from './../../../shared/models/course';
 import { CourseDurationLimit, CoursesFilterParams } from './../../models';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Course } from 'src/app/application/shared/models';
-import { CoursesService } from '../../services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QueryParamsHelperService } from 'src/app/core/services';
 import { map, tap } from 'rxjs/operators';
@@ -49,12 +49,12 @@ export class AllCoursesComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.route.queryParams.subscribe(params => {
         Object.assign(this.filterParams, params);
-        this.getComponentList();
+        this.setComponentList();
       })
     );
   }
 
-  private getComponentList() {
+  private setComponentList() {
     this.searchSubscription?.unsubscribe();
     if (this.courses?.length > 0) {
       this.componentList = this.filterCourses(this.courses);

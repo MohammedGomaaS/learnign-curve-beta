@@ -15,6 +15,7 @@ const routes: Routes = [
     path: '404',
     component: NotFoundPageComponent
   },
+  { path: 'user', loadChildren: () => import('./application/user/user.module').then(m => m.UserModule) },
   {
     path: '**',
     redirectTo: '404',

@@ -1,7 +1,7 @@
+import { CoursesService } from './../../../shared/services/courses.service';
 import { Course } from './../../../shared/models/course';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CoursesService } from '../../services';
 
 @Component({
   selector: 'app-students-requested-courses',
@@ -13,9 +13,9 @@ export class StudentsRequestedCoursesComponent implements OnInit {
   constructor(private coursesService: CoursesService) { }
 
   ngOnInit() {
-    this.getComponentList();
+    this.setComponentList();
   }
-  private getComponentList() {
+  private setComponentList() {
     this.onComponentList$ = this.coursesService.getStudentsRequestedCourses();
   }
 }

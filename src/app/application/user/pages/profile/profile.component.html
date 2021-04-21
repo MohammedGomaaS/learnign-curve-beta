@@ -1,0 +1,19 @@
+<br>User info<br>
+==========<br>
+<ng-container *ngIf="onStudent$|async as student">
+  Id:{{student.Id}}<br>
+  Name:{{student.Name}}<br>
+  Email:{{student.Email}}<br>
+  Phone:{{student.Phone}}<br>
+  Address:{{student.Address}}<br>
+</ng-container>
+<br>
+User Courses<br>
+==========<br>
+<ng-container *ngFor="let listItem of onStudentCourses$|async">
+  <app-course *ngIf="listItem|async as course else loadding" [course]="course">
+    <ng-container paymentMethods>{{course.paymets|json}}</ng-container>
+  </app-course>
+<ng-template #loadding>loadding...</ng-template>
+<br>===================================================<br>
+</ng-container>

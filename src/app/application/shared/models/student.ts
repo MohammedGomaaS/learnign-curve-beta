@@ -4,5 +4,5 @@ export interface Student {
   Email: string,
   Phone: string,
   Address: string,
-  RegisterDate: Date
+  RegisterDate: string;
 }

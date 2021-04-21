@@ -6,16 +6,15 @@ import { CommonModule } from '@angular/common';
 import { AllCoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './courses.component';
 import { SharedModule } from '../shared/shared.module';
-import { CoursesService } from './services';
 
 const components = [RecentUpdatesComponent, TodoListComponent];
 const directives = [];
 const pipes = [];
-const services = [CoursesService];
+const services = [];
 const pages = [AllCoursesComponent, StudentsRequestedCoursesComponent];
 
 @NgModule({
-  declarations: [CoursesComponent, ...components, ...directives, ...pipes, pages],
+  declarations: [CoursesComponent, ...components, ...directives, ...pipes, ...pages],
   imports: [
     CommonModule,
     AllCoursesRoutingModule,

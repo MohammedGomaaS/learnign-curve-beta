@@ -27,8 +27,9 @@
   <label for="ITSoftware">ITSoftware</label><br>
   <input type="radio" id="others" formControlName="category" [value]="courseCategoryEnum.others" name="category">
   <label for="others">Others</label><br>
-
   <br>
+
+
   Level:<br>
   <input type="radio" id="Beginner" formControlName="courseLevel" [value]="courseLevelEnum.Beginner" name="courseLevel">
   <label for="Beginner">Beginner</label><br>
@@ -41,14 +42,16 @@
   <input type="radio" id="AllLevels" formControlName="courseLevel" [value]="courseLevelEnum.AllLevels"
     name="courseLevel">
   <label for="AllLevels">AllLevels</label><br>
-
   <ng-container *ngFor="let listItem of componentList">
     <app-course [course]="listItem">
       <ng-container availableSeats>
         availableSeats:{{listItem.AvailableSeats}}
       </ng-container> <br>
+      <ng-container addBtn>
+        <button>add to cart</button>
+      </ng-container>
     </app-course>
-    ===================================================<br>
+    <br>===================================================<br>
   </ng-container>
 </form>
 <app-recent-updates></app-recent-updates>
