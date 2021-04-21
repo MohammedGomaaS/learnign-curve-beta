@@ -19,7 +19,7 @@ export class CoursesService {
     return of(this.getCoursesRequestesPayments(requests)).pipe(
       map(coursesPaymets => {
         return coursesPaymets.map((coursePaymets) => {
-          return this.getCourseById(coursePaymets.id).pipe(delay(1000), map(course => {
+          return this.getCourse(coursePaymets.id).pipe(delay(1000), map(course => {
             if (!course) { return {} as Course }
             course.paymets = coursePaymets.PaymentTypes
             return course
@@ -32,7 +32,7 @@ export class CoursesService {
   public getStudentCourses(studentId: number): Observable<Observable<Course>[]> {
     return of(requests.find(resuest => resuest.StudentId === studentId)).pipe(
       map(request => {
-        return request.Courses.map(course => this.getCourseById(course.CourseId).pipe(
+        return request.Courses.map(course => this.getCourse(course.CourseId).pipe(
           delay(1000),
           map(course => {
             if (!course) { return {} as Course }
@@ -43,7 +43,7 @@ export class CoursesService {
       }));
   }
 
-  private getCourseById(courseId: number): Observable<Course> {
+  private getCourse(courseId: number): Observable<Course> {
     return of(courses.find(course => course.CourseId === courseId));
   }
 
