@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CoreComponent } from './core.component';
+import { QueryParamsHelperService } from './services';
+
+
+const services = [QueryParamsHelperService]
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [CoreComponent]
+  providers: [...services],
 })
 export class CoreModule { }

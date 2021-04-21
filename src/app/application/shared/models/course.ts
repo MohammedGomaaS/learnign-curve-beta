@@ -10,7 +10,8 @@ export enum CourseCategory {
   Arabic = "Arabic",
   Islamic = "Islamic",
   Development = "Development",
-  Math = "Math"
+  Math = "Math",
+  others = ''
 }
 export interface Course {
   CourseId: number,

@@ -5,10 +5,10 @@ import { Course } from '../../shared/models';
 @Injectable()
 export class CoursesService {
 
-constructor() { }
+  constructor() { }
 
 
-public getCourses():Observable<Course[]>{
-  return of(courses);
-}
+  public getCourses(): Observable<Course[]> {
+    return of(courses);
+  }
 }

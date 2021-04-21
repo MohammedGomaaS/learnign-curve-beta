@@ -1,6 +1,7 @@
 import { CourseComponent } from './components';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const components = [CourseComponent];
 const directives = [];
@@ -10,9 +11,11 @@ const services = [];
 @NgModule({
   declarations: [...components, ...directives, ...pipes],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [...services],
-  exports: [...components, ...directives, ...pipes]
+  exports: [ReactiveFormsModule,...components, ...directives, ...pipes]
 })
 export class SharedModule { }

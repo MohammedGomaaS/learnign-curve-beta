@@ -19,8 +19,7 @@ const pages = [AllCoursesComponent];
   imports: [
     CommonModule,
     AllCoursesRoutingModule,
-    SharedModule,
-    FormsModule
+    SharedModule
   ],
   providers: [...services]
 })
