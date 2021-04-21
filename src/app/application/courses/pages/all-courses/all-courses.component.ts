@@ -6,8 +6,9 @@ import { Course } from 'src/app/application/shared/models';
 import { CoursesService } from '../../services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QueryParamsHelperService } from 'src/app/core/services';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { courses } from 'src/app/application/mocks/courses';
 @Component({
   templateUrl: './all-courses.component.html',
   styleUrls: ['./all-courses.component.scss']
@@ -15,6 +16,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class AllCoursesComponent implements OnInit, OnDestroy {
   public searchForm: FormGroup;
   public componentList: Course[] = [];
+  private courses: Course[] = [];
   private subscriptions: Subscription[] = [];
   private searchSubscription: Subscription;
   private filterParams: CoursesFilterParams = new CoursesFilterParams();
@@ -30,7 +32,7 @@ export class AllCoursesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscribeToUrlParams();
-      this.createSearchForm()
+    this.createSearchForm()
   }
   private createSearchForm() {
     this.searchForm = this.fb.group({
@@ -55,7 +57,12 @@ export class AllCoursesComponent implements OnInit, OnDestroy {
 
   private getComponentList() {
     this.searchSubscription?.unsubscribe();
+    if (this.courses?.length > 0) {
+      this.componentList = this.filterCourses(this.courses);
+      return
+    }
     this.searchSubscription = this.coursesService.getCourses().pipe(
+      tap(courses => { this.courses = courses }),
       map(courses => this.filterCourses(courses)))
       .subscribe(courses => {
         this.componentList = courses;
