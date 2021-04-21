@@ -1,4 +1,4 @@
-import { AllCoursesComponent } from './pages';
+import { AllCoursesComponent, StudentsRequestedCoursesComponent } from './pages';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -14,7 +14,10 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'all-courses', component: AllCoursesComponent,
+        path: 'all-courses', component: AllCoursesComponent
+      },
+      {
+        path: 'students-requested-courses', component: StudentsRequestedCoursesComponent
       }
     ]
   }

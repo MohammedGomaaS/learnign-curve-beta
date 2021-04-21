@@ -1,4 +1,4 @@
-import { Course, CourseCategory, CourseLevel } from './../shared//models/course';
+import { Course, CourseCategory, CourseLevel } from './../shared//models';
 export let courses: Course[] = [
   {
     CourseId: 123,

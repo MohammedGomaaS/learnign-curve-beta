@@ -43,7 +43,11 @@
   <label for="AllLevels">AllLevels</label><br>
 
   <ng-container *ngFor="let listItem of componentList">
-    <app-course [course]="listItem"></app-course>
+    <app-course [course]="listItem">
+      <ng-container availableSeats>
+        availableSeats:{{listItem.AvailableSeats}}
+      </ng-container> <br>
+    </app-course>
     ===================================================<br>
   </ng-container>
 </form>

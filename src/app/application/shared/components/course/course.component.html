@@ -1,7 +1,10 @@
 courseName:{{course.CourseName}} <br>
 coursePrice:{{course.CoursePrice}} <br>
-availableSeats:{{course.AvailableSeats}} <br>
 courseImg:{{course.CourseImg}} <br>
 courseLevel:{{course.CourseLevel}} <br>
 courseDuration:{{course.CourseDuration}} <br>
 courseCategory: {{course.CourseCategory}} <br>
+
+<ng-content select="[addBtn]"></ng-content>
+<ng-content select="[availableSeats]"></ng-content>
+<ng-content select="[paymentMethods]"></ng-content>

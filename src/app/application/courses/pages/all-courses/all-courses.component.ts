@@ -8,7 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { QueryParamsHelperService } from 'src/app/core/services';
 import { map, tap } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { courses } from 'src/app/application/mocks/courses';
 @Component({
   templateUrl: './all-courses.component.html',
   styleUrls: ['./all-courses.component.scss']

@@ -1,3 +1,4 @@
+import { PaymentType } from './requested-courses';
 export enum CourseLevel {
   Beginner = 'Beginner',
   Intermediate = 'Intermediate',
@@ -22,4 +23,6 @@ export interface Course {
   CourseLevel: CourseLevel,
   CourseDuration: number,
   CourseCategory: CourseCategory;
+  paymets?:PaymentType[];
 }
+

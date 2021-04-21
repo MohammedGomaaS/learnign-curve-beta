@@ -1,0 +1,7 @@
+<ng-container *ngFor="let listItem of onComponentList$|async">
+  <app-course *ngIf="listItem|async as course else loadding" [course]="course">
+    <ng-container paymentMethods>----{{course.paymets|json}}</ng-container>
+  </app-course>
+<ng-template #loadding>loadding...</ng-template>
+<br>===================================================<br>
+</ng-container>

@@ -1,5 +1,5 @@
 import { TodoListComponent, RecentUpdatesComponent } from './components';
-import { AllCoursesComponent } from './pages';
+import { AllCoursesComponent, StudentsRequestedCoursesComponent } from './pages';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,7 +12,7 @@ const components = [RecentUpdatesComponent, TodoListComponent];
 const directives = [];
 const pipes = [];
 const services = [CoursesService];
-const pages = [AllCoursesComponent];
+const pages = [AllCoursesComponent, StudentsRequestedCoursesComponent];
 
 @NgModule({
   declarations: [CoursesComponent, ...components, ...directives, ...pipes, pages],

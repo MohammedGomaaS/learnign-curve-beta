@@ -2,9 +2,9 @@ export enum PaymentType {
   Cash = 'Cash',
   Online = 'online'
 }
-export interface RequestedCourses {
+export interface CoursesRequest {
   StudentId: number,
-  RequestDate: Date,
+  RequestDate: string,
   TeacherID: string,
   Courses: {
     CourseId: number,
