@@ -3,21 +3,27 @@
 
   <br>
   Duration :<br>
-  <input type="radio" id="lessThan2Hours" formControlName="courseDurationLimit" [value]="CourseDurationLimitEnum.lessThan2Hours" name="courseDurationLimit">
+  <input type="radio" id="lessThan2Hours" formControlName="courseDurationLimit"
+    [value]="CourseDurationLimitEnum.lessThan2Hours" name="courseDurationLimit">
   <label for="lessThan2Hours">lessThan2Hours</label><br>
-  <input type="radio" id="from2To10Hours" formControlName="courseDurationLimit" [value]="CourseDurationLimitEnum.from2To10Hours" name="courseDurationLimit">
+  <input type="radio" id="from2To10Hours" formControlName="courseDurationLimit"
+    [value]="CourseDurationLimitEnum.from2To10Hours" name="courseDurationLimit">
   <label for="from2To10Hours">from2To10Hours</label><br>
-  <input type="radio" id="morThan10Hours" formControlName="courseDurationLimit" [value]="CourseDurationLimitEnum.morThan10Hours" name="courseDurationLimit">
+  <input type="radio" id="morThan10Hours" formControlName="courseDurationLimit"
+    [value]="CourseDurationLimitEnum.morThan10Hours" name="courseDurationLimit">
   <label for="morThan10Hours">morThan10Hours</label><br>
 
 
   <br>
   Category:<br>
-  <input type="radio" id="development" formControlName="category" [value]="courseCategoryEnum.Development" name="category">
+  <input type="radio" id="development" formControlName="category" [value]="courseCategoryEnum.Development"
+    name="category">
   <label for="development">Development</label><br>
-  <input type="radio" id="financeAccounting" formControlName="category" [value]="courseCategoryEnum.FinanceAccounting" name="category">
+  <input type="radio" id="financeAccounting" formControlName="category" [value]="courseCategoryEnum.FinanceAccounting"
+    name="category">
   <label for="financeAccounting">financeAccounting</label><br>
-  <input type="radio" id="ITSoftware" formControlName="category" [value]="courseCategoryEnum.ITSoftware" name="category">
+  <input type="radio" id="ITSoftware" formControlName="category" [value]="courseCategoryEnum.ITSoftware"
+    name="category">
   <label for="ITSoftware">ITSoftware</label><br>
   <input type="radio" id="others" formControlName="category" [value]="courseCategoryEnum.others" name="category">
   <label for="others">Others</label><br>
@@ -26,11 +32,14 @@
   Level:<br>
   <input type="radio" id="Beginner" formControlName="courseLevel" [value]="courseLevelEnum.Beginner" name="courseLevel">
   <label for="Beginner">Beginner</label><br>
-  <input type="radio" id="Intermediate" formControlName="courseLevel" [value]="courseLevelEnum.Intermediate" name="courseLevel">
+  <input type="radio" id="Intermediate" formControlName="courseLevel" [value]="courseLevelEnum.Intermediate"
+    name="courseLevel">
   <label for="Intermediate">Intermediate</label><br>
-  <input type="radio" id="courseLevel" formControlName="courseLevel" [value]="courseLevelEnum.Expert" name="courseLevel">
+  <input type="radio" id="courseLevel" formControlName="courseLevel" [value]="courseLevelEnum.Expert"
+    name="courseLevel">
   <label for="courseLevel">courseLevel</label><br>
-  <input type="radio" id="AllLevels" formControlName="courseLevel" [value]="courseLevelEnum.AllLevels" name="courseLevel">
+  <input type="radio" id="AllLevels" formControlName="courseLevel" [value]="courseLevelEnum.AllLevels"
+    name="courseLevel">
   <label for="AllLevels">AllLevels</label><br>
 
   <ng-container *ngFor="let listItem of componentList">
@@ -38,3 +47,5 @@
     ===================================================<br>
   </ng-container>
 </form>
+<app-recent-updates></app-recent-updates>
+<app-recent-updates></app-recent-updates>

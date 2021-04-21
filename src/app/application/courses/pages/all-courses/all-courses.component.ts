@@ -9,7 +9,6 @@ import { QueryParamsHelperService } from 'src/app/core/services';
 import { map } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
-  selector: 'app-all-courses',
   templateUrl: './all-courses.component.html',
   styleUrls: ['./all-courses.component.scss']
 })

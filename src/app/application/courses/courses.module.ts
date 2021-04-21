@@ -1,3 +1,4 @@
+import { TodoListComponent, RecentUpdatesComponent } from './components';
 import { AllCoursesComponent } from './pages';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,9 +7,8 @@ import { AllCoursesRoutingModule } from './courses-routing.module';
 import { CoursesComponent } from './courses.component';
 import { SharedModule } from '../shared/shared.module';
 import { CoursesService } from './services';
-import { FormsModule } from '@angular/forms';
 
-const components = [];
+const components = [RecentUpdatesComponent, TodoListComponent];
 const directives = [];
 const pipes = [];
 const services = [CoursesService];
