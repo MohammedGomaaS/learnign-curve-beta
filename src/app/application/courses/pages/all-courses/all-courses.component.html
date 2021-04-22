@@ -1,58 +1,252 @@
-<form *ngIf="searchForm" [formGroup]="searchForm">
-  <input type="text" formControlName="searchText" placeholder="search by course name">
+<!--Start Page Content-->
+<div class="page-content d-flex justify-content-between row no-gutters" [formGroup]="searchForm">
 
-  <br>
-  Duration :<br>
-  <input type="radio" id="lessThan2Hours" formControlName="courseDurationLimit"
-    [value]="CourseDurationLimitEnum.lessThan2Hours" name="courseDurationLimit">
-  <label for="lessThan2Hours">lessThan2Hours</label><br>
-  <input type="radio" id="from2To10Hours" formControlName="courseDurationLimit"
-    [value]="CourseDurationLimitEnum.from2To10Hours" name="courseDurationLimit">
-  <label for="from2To10Hours">from2To10Hours</label><br>
-  <input type="radio" id="morThan10Hours" formControlName="courseDurationLimit"
-    [value]="CourseDurationLimitEnum.morThan10Hours" name="courseDurationLimit">
-  <label for="morThan10Hours">morThan10Hours</label><br>
+  <!--Start Filters-->
+  <div class="col-xl">
+    <div id="filters-wrapper" class="filters-wrapper">
+      <div class="filters-title-wrapper d-flex justify-content-between">
+        <h4 class="filters-title">Filter BY:</h4>
+        <button id="closeFiltersBtn" class="btn close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="filters-group">
+        <h5 class="filters-group-title">Course Duration</h5>
+        <div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="lessThan2Hours" formControlName="courseDurationLimit"
+              [value]="CourseDurationLimitEnum.lessThan2Hours" name="courseDurationLimit">
+            <label class="form-check-label" for="lessThan2Hours">Less than 2 hours</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="from2To10Hours" formControlName="courseDurationLimit"
+              [value]="CourseDurationLimitEnum.from2To10Hours" name="courseDurationLimit">
+            <label class="form-check-label" for="from2To10Hours">From 2 to 10 hours</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="morThan10Hours" formControlName="courseDurationLimit"
+              [value]="CourseDurationLimitEnum.morThan10Hours" name="courseDurationLimit">
+            <label class="form-check-label" for="morThan10Hours">more than 10 hours</label>
+          </div>
+        </div>
+      </div>
+      <div class="filters-group">
+        <h5 class="filters-group-title">All Categories</h5>
+        <div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="development" formControlName="category"
+              [value]="courseCategoryEnum.Development" name="category">
+            <label class="form-check-label" for="development">Development</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="financeAccounting" formControlName="category"
+              [value]="courseCategoryEnum.FinanceAccounting" name="category">
+            <label class="form-check-label" for="financeAccounting">Finance & Accounting</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="ITSoftware" formControlName="category"
+              [value]="courseCategoryEnum.ITSoftware" name="category">
+            <label class="form-check-label" for="ITSoftware">IT & Software</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="others" formControlName="category"
+              [value]="courseCategoryEnum.others" name="category">
+            <label class="form-check-label" for="others">Others</label>
+          </div>
+        </div>
+      </div>
+      <div class="filters-group">
+        <h5 class="filters-group-title">The difficulty level of the course</h5>
+        <div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="Beginner" formControlName="courseLevel"
+              [value]="courseLevelEnum.Beginner" name="courseLevel">
+            <label class="form-check-label" for="Beginner">Beginner</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="Intermediate" formControlName="courseLevel"
+              [value]="courseLevelEnum.Intermediate" name="courseLevel">
+            <label class="form-check-label" for="Intermediate">Intermediate</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="courseLevel" formControlName="courseLevel"
+              [value]="courseLevelEnum.Expert" name="courseLevel">
+            <label class="form-check-label" for="courseLevel">Expert</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="AllLevels" formControlName="courseLevel"
+              [value]="courseLevelEnum.AllLevels" name="courseLevel">
+            <label class="form-check-label" for="AllLevels">All Levels</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--End Filters-->
+  <!--Start Courses-->
+  <div class="col-12 col-xl-7">
+    <div class="courses-cards-wrapper d-flex flex-grow-1 flex-column">
+      <div class="courses-header d-flex align-items-start justify-content-between">
+        <div class="courses-header-title">
+          <h5>All Courses</h5>
+        </div>
+        <div class="d-flex">
+          <button id="filterBtn" class="d-flex align-items-center d-xl-none btn btn-outline-success text-white mr-3"
+            data-toggle="tooltip" data-placement="bottom" title="Filters">
+            <i class="fas fa-filter"></i>
+            <span class="d-none d-sm-flex d-xl-none ml-2">Filters</span>
+          </button>
+          <div class="search-section d-flex">
+            <i class="fa fa-search"></i>
+            <input class="form-control search-field" type="text" formControlName="searchText"
+              placeholder="Search By course or name">
+          </div>
+        </div>
+      </div>
+
+      <div class="courses-cards row no-gutters">
+        <ng-container *ngFor="let listItem of componentList">
+          <div class="col-12 col-md-6">
+            <app-course [course]="listItem">
+              <ng-container availableSeats>
+                <div class="course-card-data-summary-point-text">
+                  <i class="fa fa-users green-color"></i>
+                  <span>{{listItem.AvailableSeats}}</span>
+                </div>
+              </ng-container>
+              <ng-container addBtn>
+                <div class="course-card-data-summary-points d-flex flex-column align-self-end">
+                  <button class="btn add-to-cart-btn d-flex align-items-center justify-content-center">Add
+                    to cart</button>
+                </div>
+              </ng-container>
+            </app-course>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <!--End Courses-->
+
+  <div class="col-12 col-xl">
+    <div>
+      <!--Start to do list-->
+      <div class="to-do-list-wrapper">
+        <div class="to-do-list-title-wrapper d-flex align-items-center justify-content-between">
+          <h5 class="to-do-list-title">To Do List</h5>
+          <button class="calander-btn btn btn-none d-flex align-items-center justify-content-center">
+            <i class="far fa-calendar-alt"></i>
+          </button>
+        </div>
+        <div class="days-numbers-wrapper d-flex align-items-center justify-content-between flex-grow-1">
+          <i class="fas fa-chevron-left"></i>
+          <div class="d-flex align-items-center justify-content-around flex-grow-1">
+            <span class="day-number">13</span>
+            <span class="day-number">14</span>
+            <span class="day-number">15</span>
+            <span class="day-number">16</span>
+            <span class="day-number active">17</span>
+            <span class="day-number">18</span>
+            <span class="day-number">19</span>
+
+          </div>
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="date-time">Mon Jan 20 2020</div>
+        <div class="to-do-item d-flex align-items-center">
+          <span class="to-do-item-time">9am-10am</span>
+          <div class="d-flex align-items-center line-through">
+            <input type="checkbox" class="to-do-check-box">
+            <div>
+              <p class="to-do-item-title inactive mb-0">Respond to Course1 Survey</p>
+              <p class="to-do-item-due-time inactive yellow-color mb-0">Due date in 28/1/2010</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="to-do-item d-flex align-items-center">
+          <span class="to-do-item-time">12pm</span>
+          <div class="d-flex align-items-center line-through">
+            <input type="checkbox" class="to-do-check-box">
+            <div>
+              <p class="to-do-item-title inactive mb-0">Assessment Title in Course2</p>
+              <p class="to-do-item-due-time inactive mb-0">Due date in 28/1/2010</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="to-do-item d-flex align-items-center">
+          <span class="to-do-item-time">9pm</span>
+          <div class="d-flex align-items-center">
+            <input type="checkbox" class="to-do-check-box">
+            <div>
+              <p class="to-do-item-title mb-0">Take Eff. Level 2 Assessment</p>
+              <p class="to-do-item-due-time mb-0">Due date in 28/1/2010</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="to-do-item d-flex align-items-center">
+          <span class="to-do-item-time">11pm</span>
+          <div class="d-flex align-items-center">
+            <input type="checkbox" class="to-do-check-box">
+            <div>
+              <p class="to-do-item-title mb-0">Take Eff. Level 2 Assessment</p>
+              <p class="to-do-item-due-time mb-0">Due date in 28/1/2010</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!--End to do list-->
+      <!--Start recent updates-->
+      <div class="recent-updates-wrapper">
+        <h5 class="recent-updates-title">Recent Updates</h5>
+        <div class="recent-update-post d-flex align-items-start">
+          <img class="recent-updates-user-img" src="assets/images/recent-updates-user-img.png" alt="">
+          <div class="recent-update-post-data d-flex flex-column">
+            <p class="recent-update-post-data-text">Karim Mostafa Post in Learning Powerful mental
+              course
+              ...</p>
+            <p class="recent-update-post-time">3 min ago.</p>
+          </div>
+        </div>
+
+        <div class="recent-update-post d-flex align-items-start">
+          <img class="recent-updates-user-img" src="assets/images/recent-updates-user-img.png" alt="">
+          <div class="recent-update-post-data d-flex flex-column">
+            <p class="recent-update-post-data-text">Karim Mostafa Post in Learning Powerful mental
+              course
+              ...</p>
+            <p class="recent-update-post-time">3 min ago.</p>
+          </div>
+        </div>
 
 
-  <br>
-  Category:<br>
-  <input type="radio" id="development" formControlName="category" [value]="courseCategoryEnum.Development"
-    name="category">
-  <label for="development">Development</label><br>
-  <input type="radio" id="financeAccounting" formControlName="category" [value]="courseCategoryEnum.FinanceAccounting"
-    name="category">
-  <label for="financeAccounting">financeAccounting</label><br>
-  <input type="radio" id="ITSoftware" formControlName="category" [value]="courseCategoryEnum.ITSoftware"
-    name="category">
-  <label for="ITSoftware">ITSoftware</label><br>
-  <input type="radio" id="others" formControlName="category" [value]="courseCategoryEnum.others" name="category">
-  <label for="others">Others</label><br>
-  <br>
+        <div class="recent-update-post d-flex align-items-start">
+          <img class="recent-updates-user-img" src="assets/images/recent-updates-user-img.png" alt="">
+          <div class="recent-update-post-data d-flex flex-column">
+            <p class="recent-update-post-data-text">Karim Mostafa Post in Learning Powerful mental
+              course
+              ...</p>
+            <p class="recent-update-post-time">3 min ago.</p>
+          </div>
+        </div>
 
 
-  Level:<br>
-  <input type="radio" id="Beginner" formControlName="courseLevel" [value]="courseLevelEnum.Beginner" name="courseLevel">
-  <label for="Beginner">Beginner</label><br>
-  <input type="radio" id="Intermediate" formControlName="courseLevel" [value]="courseLevelEnum.Intermediate"
-    name="courseLevel">
-  <label for="Intermediate">Intermediate</label><br>
-  <input type="radio" id="courseLevel" formControlName="courseLevel" [value]="courseLevelEnum.Expert"
-    name="courseLevel">
-  <label for="courseLevel">courseLevel</label><br>
-  <input type="radio" id="AllLevels" formControlName="courseLevel" [value]="courseLevelEnum.AllLevels"
-    name="courseLevel">
-  <label for="AllLevels">AllLevels</label><br>
-  <ng-container *ngFor="let listItem of componentList">
-    <app-course [course]="listItem">
-      <ng-container availableSeats>
-        availableSeats:{{listItem.AvailableSeats}}
-      </ng-container> <br>
-      <ng-container addBtn>
-        <button>add to cart</button>
-      </ng-container>
-    </app-course>
-    <br>===================================================<br>
-  </ng-container>
-</form>
-<app-recent-updates></app-recent-updates>
-<app-recent-updates></app-recent-updates>
+        <div class="recent-update-post d-flex align-items-start">
+          <img class="recent-updates-user-img" src="assets/images/recent-updates-user-img.png" alt="">
+          <div class="recent-update-post-data d-flex flex-column">
+            <p class="recent-update-post-data-text">Karim Mostafa Post in Learning Powerful mental
+              course
+              ...</p>
+            <p class="recent-update-post-time">3 min ago.</p>
+          </div>
+        </div>
+
+      </div>
+      <!--End recent updates-->
+    </div>
+  </div>
+</div>

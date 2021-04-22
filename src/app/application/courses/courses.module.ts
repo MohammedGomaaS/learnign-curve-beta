@@ -1,3 +1,4 @@
+import { ShellModule } from './../shell/shell.module';
 import { TodoListComponent, RecentUpdatesComponent } from './components';
 import { AllCoursesComponent, StudentsRequestedCoursesComponent } from './pages';
 import { NgModule } from '@angular/core';

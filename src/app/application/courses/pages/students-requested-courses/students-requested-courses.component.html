@@ -1,7 +1,31 @@
-<ng-container *ngFor="let listItem of onComponentList$|async">
-  <app-course *ngIf="listItem|async as course else loadding" [course]="course">
-    <ng-container paymentMethods>{{course.paymets|json}}</ng-container>
-  </app-course>
-<ng-template #loadding>loadding...</ng-template>
-<br>===================================================<br>
-</ng-container>
+<div class="page-content d-flex justify-content-between row no-gutters">
+  <!--Start Courses-->
+  <div class="col-12 col-xl-12">
+    <div class="courses-cards-wrapper d-flex flex-grow-1 flex-column">
+      <div class="courses-header d-flex align-items-start justify-content-between">
+        <div class="courses-header-title">
+          <h5>Student Requested Courses</h5>
+        </div>
+      </div>
+
+      <div class="courses-cards row no-gutters">
+        <ng-container *ngFor="let listItem of onComponentList$|async">
+          <ng-container *ngIf="listItem|async as course else loadding">
+            <div class="col-12 col-md-3" *ngIf="course.CourseId">
+              <app-course [course]="course">
+                <ng-container paymentMethods>
+                  <div class="course-card-data-summary-point-text">
+                    <i class="fa fa-users green-color"></i>
+                    <span>{{course.paymets?.toString()}}</span>
+                  </div>
+                </ng-container>
+              </app-course>
+            </div>
+          </ng-container>
+          <ng-template #loadding>loadding...</ng-template>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <!--End Courses-->
+</div>

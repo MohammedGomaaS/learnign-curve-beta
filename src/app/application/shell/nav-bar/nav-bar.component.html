@@ -1,0 +1,29 @@
+    <!--Start Navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <a class="navbar-brand" [routerLink]="['/app/courses/all-courses']">
+          <img src="assets/images/Logo.png" alt="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item d-flex align-items-center" [routerLinkActive]="'active'">
+                  <a class="nav-link" [routerLink]="['/app/courses/all-courses']">Home</a>
+              </li>
+              <li class="nav-item d-flex align-items-center" [routerLinkActive]="'active'">
+                  <a class="nav-link" [routerLink]="['/app/courses/students-requested-courses']">Student Requested Courses</a>
+              </li>
+              <li class="nav-item d-flex align-items-center profile-link" >
+                  <a class="nav-link d-flex align-items-center" [routerLink]="['/app/user/profile']" data-toggle="tooltip" data-placement="bottom"
+                      title="My Profile">
+                      <img src="assets/images/user-img.png" alt="">
+                      <span class="d-flex d-md-none ml-3 ml-md-none">My Profile</span>
+                  </a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+  <!--End Navbar-->
