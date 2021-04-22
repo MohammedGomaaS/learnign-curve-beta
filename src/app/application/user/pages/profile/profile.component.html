@@ -21,7 +21,7 @@
 
       <div class="courses-cards row no-gutters">
         <ng-container *ngFor="let listItem of onStudentCourses$|async">
-          <ng-container *ngIf="listItem|async as course else loadding">
+          <ng-container *ngIf="listItem|async as course">
             <div class="col-12 col-md-3" *ngIf="course.CourseId">
               <app-course [course]="course">
                 <ng-container paymentMethods>
@@ -33,7 +33,6 @@
               </app-course>
             </div>
           </ng-container>
-          <ng-template #loadding>loadding...</ng-template>
         </ng-container>
       </div>
     </div>
