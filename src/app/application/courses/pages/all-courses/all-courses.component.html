@@ -3,10 +3,10 @@
 
   <!--Start Filters-->
   <div class="col-xl">
-    <div id="filters-wrapper" class="filters-wrapper">
+    <div id="filters-wrapper" class="filters-wrapper" [ngClass]="{active:isFiltersWrapperActive}">
       <div class="filters-title-wrapper d-flex justify-content-between">
         <h4 class="filters-title">Filter BY:</h4>
-        <button id="closeFiltersBtn" class="btn close-btn">
+        <button id="closeFiltersBtn" class="btn close-btn" (click)="closeFilters()">
           <i class="fa fa-times"></i>
         </button>
       </div>
@@ -92,7 +92,7 @@
           <h5>All Courses</h5>
         </div>
         <div class="d-flex">
-          <button id="filterBtn" class="d-flex align-items-center d-xl-none btn btn-outline-success text-white mr-3"
+          <button id="filterBtn" (click)="toggleFilters()" class="d-flex align-items-center d-xl-none btn btn-outline-success text-white mr-3"
             data-toggle="tooltip" data-placement="bottom" title="Filters">
             <i class="fa fa-filter"></i>
             <span class="d-none d-sm-flex d-xl-none ml-2">Filters</span>
@@ -111,7 +111,8 @@
             <app-course [course]="listItem">
               <ng-container availableSeats>
                 <div class="course-card-data-summary-point-text">
-                  <i class="fa fa-users green-color"></i>
+                  <i class="fa fa-users"
+                    [ngClass]="{'green-color': listItem.AvailableSeats>4,'orange-color':listItem.AvailableSeats<=4}"></i>
                   <span>{{listItem.AvailableSeats}}</span>
                 </div>
               </ng-container>
@@ -131,122 +132,8 @@
 
   <div class="col-12 col-xl">
     <div>
-      <!--Start to do list-->
-      <div class="to-do-list-wrapper">
-        <div class="to-do-list-title-wrapper d-flex align-items-center justify-content-between">
-          <h5 class="to-do-list-title">To Do List</h5>
-          <button class="calander-btn btn btn-none d-flex align-items-center justify-content-center">
-            <i class="fa fa-calendar"></i>
-          </button>
-        </div>
-        <div class="days-numbers-wrapper d-flex align-items-center justify-content-between flex-grow-1">
-          <i class="fa fa-chevron-left"></i>
-          <div class="d-flex align-items-center justify-content-around flex-grow-1">
-            <span class="day-number">13</span>
-            <span class="day-number">14</span>
-            <span class="day-number">15</span>
-            <span class="day-number">16</span>
-            <span class="day-number active">17</span>
-            <span class="day-number">18</span>
-            <span class="day-number">19</span>
-
-          </div>
-          <i class="fa fa-chevron-right"></i>
-        </div>
-        <div class="date-time">Mon Jan 20 2020</div>
-        <div class="to-do-item d-flex align-items-center">
-          <span class="to-do-item-time">9am-10am</span>
-          <div class="d-flex align-items-center line-through">
-            <input type="checkbox" class="to-do-check-box">
-            <div>
-              <p class="to-do-item-title inactive mb-0">Respond to Course1 Survey</p>
-              <p class="to-do-item-due-time inactive yellow-color mb-0">Due date in 28/1/2010</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="to-do-item d-flex align-items-center">
-          <span class="to-do-item-time">12pm</span>
-          <div class="d-flex align-items-center line-through">
-            <input type="checkbox" class="to-do-check-box">
-            <div>
-              <p class="to-do-item-title inactive mb-0">Assessment Title in Course2</p>
-              <p class="to-do-item-due-time inactive mb-0">Due date in 28/1/2010</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="to-do-item d-flex align-items-center">
-          <span class="to-do-item-time">9pm</span>
-          <div class="d-flex align-items-center">
-            <input type="checkbox" class="to-do-check-box">
-            <div>
-              <p class="to-do-item-title mb-0">Take Eff. Level 2 Assessment</p>
-              <p class="to-do-item-due-time mb-0">Due date in 28/1/2010</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="to-do-item d-flex align-items-center">
-          <span class="to-do-item-time">11pm</span>
-          <div class="d-flex align-items-center">
-            <input type="checkbox" class="to-do-check-box">
-            <div>
-              <p class="to-do-item-title mb-0">Take Eff. Level 2 Assessment</p>
-              <p class="to-do-item-due-time mb-0">Due date in 28/1/2010</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <!--End to do list-->
-      <!--Start recent updates-->
-      <div class="recent-updates-wrapper">
-        <h5 class="recent-updates-title">Recent Updates</h5>
-        <div class="recent-update-post d-flex align-items-start">
-          <img class="recent-updates-user-img" src="assets/images/recent-updates-user-img.png" alt="">
-          <div class="recent-update-post-data d-flex flex-column">
-            <p class="recent-update-post-data-text">Karim Mostafa Post in Learning Powerful mental
-              course
-              ...</p>
-            <p class="recent-update-post-time">3 min ago.</p>
-          </div>
-        </div>
-
-        <div class="recent-update-post d-flex align-items-start">
-          <img class="recent-updates-user-img" src="assets/images/recent-updates-user-img.png" alt="">
-          <div class="recent-update-post-data d-flex flex-column">
-            <p class="recent-update-post-data-text">Karim Mostafa Post in Learning Powerful mental
-              course
-              ...</p>
-            <p class="recent-update-post-time">3 min ago.</p>
-          </div>
-        </div>
-
-
-        <div class="recent-update-post d-flex align-items-start">
-          <img class="recent-updates-user-img" src="assets/images/recent-updates-user-img.png" alt="">
-          <div class="recent-update-post-data d-flex flex-column">
-            <p class="recent-update-post-data-text">Karim Mostafa Post in Learning Powerful mental
-              course
-              ...</p>
-            <p class="recent-update-post-time">3 min ago.</p>
-          </div>
-        </div>
-
-
-        <div class="recent-update-post d-flex align-items-start">
-          <img class="recent-updates-user-img" src="assets/images/recent-updates-user-img.png" alt="">
-          <div class="recent-update-post-data d-flex flex-column">
-            <p class="recent-update-post-data-text">Karim Mostafa Post in Learning Powerful mental
-              course
-              ...</p>
-            <p class="recent-update-post-time">3 min ago.</p>
-          </div>
-        </div>
-
-      </div>
-      <!--End recent updates-->
+      <app-todo-list></app-todo-list>
+      <app-recent-updates></app-recent-updates>
     </div>
   </div>
 </div>

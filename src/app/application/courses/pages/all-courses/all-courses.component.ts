@@ -1,13 +1,14 @@
 import { CoursesService } from './../../../shared/services';
 import { CourseCategory, CourseLevel } from './../../../shared/models/course';
 import { CourseDurationLimit, CoursesFilterParams } from './../../models';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Course } from 'src/app/application/shared/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QueryParamsHelperService } from 'src/app/core/services';
 import { map, tap } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CarouselComponent } from 'angular-responsive-carousel';
 @Component({
   templateUrl: './all-courses.component.html',
   styleUrls: ['./all-courses.component.scss']
@@ -22,6 +23,8 @@ export class AllCoursesComponent implements OnInit, OnDestroy {
   public courseCategoryEnum = CourseCategory;
   public courseLevelEnum = CourseLevel;
   public CourseDurationLimitEnum = CourseDurationLimit;
+  public isFiltersWrapperActive: boolean =false;
+
   constructor(
     private coursesService: CoursesService,
     private route: ActivatedRoute,
@@ -33,6 +36,19 @@ export class AllCoursesComponent implements OnInit, OnDestroy {
     this.subscribeToUrlParams();
     this.createSearchForm()
   }
+
+  public toggleFilters() {
+    this.isFiltersWrapperActive = !this.isFiltersWrapperActive;
+    document.getElementById('overlay').classList.remove('d-none');
+
+  };
+
+  public closeFilters() {
+    this.isFiltersWrapperActive = false;
+    document.getElementById('overlay').classList.add('d-none');
+
+  }
+
   private createSearchForm() {
     this.searchForm = this.fb.group({
       searchText: [this.filterParams.searchText],

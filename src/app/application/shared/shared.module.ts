@@ -3,6 +3,7 @@ import { CourseComponent } from './components';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 const components = [CourseComponent];
 const directives = [];
@@ -14,9 +15,10 @@ const services = [CoursesService];
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IvyCarouselModule
   ],
   providers: [...services],
-  exports: [ReactiveFormsModule, ...components, ...directives, ...pipes]
+  exports: [ReactiveFormsModule, ...components, ...directives, ...pipes, IvyCarouselModule]
 })
 export class SharedModule { }

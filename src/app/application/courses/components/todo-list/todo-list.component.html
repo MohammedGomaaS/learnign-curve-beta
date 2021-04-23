@@ -1,3 +1,70 @@
-<p>
-  todo-list works!
-</p>
+      <!--Start to do list-->
+      <div class="to-do-list-wrapper">
+        <div class="to-do-list-title-wrapper d-flex align-items-center justify-content-between">
+          <h5 class="to-do-list-title">To Do List</h5>
+          <button class="calander-btn btn btn-none d-flex align-items-center justify-content-center">
+            <i class="fa fa-calendar"></i>
+          </button>
+        </div>
+        <div class="days-numbers-wrapper d-flex align-items-center justify-content-between flex-grow-1">
+          <button (click)="onPreviousDay()" class="btn shadow-none p-1">
+            <i class="fa fa-chevron-left m-0"></i>
+          </button>
+
+          <carousel #myCarousel id="myCarousel" [arrows]="false" [width]="230" height="30"
+            [cellsToShow]="7">
+            <ng-container *ngFor="let dayNumber of dayNumbers">
+              <button class="btn shadow-none day-number carousel-cell" [ngClass]="{'active': activeDay === dayNumber}" (click)="activeDay = dayNumber">{{dayNumber}}</button>
+            </ng-container>
+          </carousel>
+          <button (click)="onNextDay()" class="btn shadow-none p-1">
+            <i class="fa fa-chevron-right m-0"></i>
+          </button>
+        </div>
+        <div class="date-time">Mon Jan 20 2020</div>
+        <div class="to-do-item d-flex align-items-center">
+          <span class="to-do-item-time">9am-10am</span>
+          <div class="d-flex align-items-center line-through">
+            <input type="checkbox" class="to-do-check-box">
+            <div>
+              <p class="to-do-item-title inactive mb-0">Respond to Course1 Survey</p>
+              <p class="to-do-item-due-time inactive yellow-color mb-0">Due date in 28/1/2010</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="to-do-item d-flex align-items-center">
+          <span class="to-do-item-time">12pm</span>
+          <div class="d-flex align-items-center line-through">
+            <input type="checkbox" class="to-do-check-box">
+            <div>
+              <p class="to-do-item-title inactive mb-0">Assessment Title in Course2</p>
+              <p class="to-do-item-due-time inactive mb-0">Due date in 28/1/2010</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="to-do-item d-flex align-items-center">
+          <span class="to-do-item-time">9pm</span>
+          <div class="d-flex align-items-center">
+            <input type="checkbox" class="to-do-check-box">
+            <div>
+              <p class="to-do-item-title mb-0">Take Eff. Level 2 Assessment</p>
+              <p class="to-do-item-due-time mb-0">Due date in 28/1/2010</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="to-do-item d-flex align-items-center">
+          <span class="to-do-item-time">11pm</span>
+          <div class="d-flex align-items-center">
+            <input type="checkbox" class="to-do-check-box">
+            <div>
+              <p class="to-do-item-title mb-0">Take Eff. Level 2 Assessment</p>
+              <p class="to-do-item-due-time mb-0">Due date in 28/1/2010</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!--End to do list-->
