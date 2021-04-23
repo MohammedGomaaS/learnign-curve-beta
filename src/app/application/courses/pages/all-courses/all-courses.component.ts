@@ -1,14 +1,13 @@
 import { CoursesService } from './../../../shared/services';
 import { CourseCategory, CourseLevel } from './../../../shared/models/course';
 import { CourseDurationLimit, CoursesFilterParams } from './../../models';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Course } from 'src/app/application/shared/models';
 import { ActivatedRoute, Router } from '@angular/router';
 import { QueryParamsHelperService } from 'src/app/core/services';
 import { map, tap } from 'rxjs/operators';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { CarouselComponent } from 'angular-responsive-carousel';
 @Component({
   templateUrl: './all-courses.component.html',
   styleUrls: ['./all-courses.component.scss']
@@ -40,13 +39,11 @@ export class AllCoursesComponent implements OnInit, OnDestroy {
   public toggleFilters() {
     this.isFiltersWrapperActive = !this.isFiltersWrapperActive;
     document.getElementById('overlay').classList.remove('d-none');
-
   };
 
   public closeFilters() {
     this.isFiltersWrapperActive = false;
     document.getElementById('overlay').classList.add('d-none');
-
   }
 
   private createSearchForm() {
@@ -58,9 +55,14 @@ export class AllCoursesComponent implements OnInit, OnDestroy {
     });
     this.searchForm.valueChanges.subscribe(re => {
       this.filterParams = re;
+      // we depend on filteration change cretira to the route query params so we can refresh and don't lose the filter
       this.queryParamsHelperService.changeUrlParams(this.filterParams)
     })
   }
+
+  /**
+   * this function listen to query param subject to filter the items
+   */
   private subscribeToUrlParams() {
     this.subscriptions.push(
       this.route.queryParams.subscribe(params => {
@@ -84,7 +86,11 @@ export class AllCoursesComponent implements OnInit, OnDestroy {
       })
   }
 
-
+/**
+ * we use this function to apply the filter cretia to the list
+ * @param courses
+ * @returns
+ */
   private filterCourses(courses: Course[]) {
     return courses.filter(course => {
       let existed: boolean = true

@@ -11,10 +11,20 @@ interface CoursesPayments {
 @Injectable()
 export class CoursesService {
   constructor() { }
+
+  /**
+   * this function silmulate calling  all courses api by using rxjs operator `of`
+   * @returns
+   */
   public getCourses(): Observable<Course[]> {
     return of(courses);
   }
 
+  /**
+   * this function get student requested courses and their payments then do mapping to get
+   * the course details  (simulate calling api)
+   * @returns
+   */
   public getStudentsRequestedCourses(): Observable<Observable<Course>[]> {
     return of(this.getCoursesRequestesPayments(requests)).pipe(
       map(coursesPaymets => {
@@ -29,6 +39,11 @@ export class CoursesService {
     );
   }
 
+  /**
+   * this function simulate calling student requests api then mapping the data to get the course details
+   * @param studentId
+   * @returns
+   */
   public getStudentCourses(studentId: number): Observable<Observable<Course>[]> {
     return of(requests.find(resuest => resuest.StudentId === studentId)).pipe(
       map(request => {
@@ -43,10 +58,20 @@ export class CoursesService {
       }));
   }
 
+  /**
+   * this function simulate calling course api
+   * @param courseId
+   * @returns
+   */
   private getCourse(courseId: number): Observable<Course> {
     return of(courses.find(course => course.CourseId === courseId));
   }
 
+  /**
+   * this function get the payments way for all requested courses
+   * @param coursesrequestes
+   * @returns
+   */
   private getCoursesRequestesPayments(coursesrequestes: CoursesRequest[]): CoursesPayments[] {
     let coursesPayments: CoursesPayments[] = [];
     coursesrequestes.forEach(request => {
