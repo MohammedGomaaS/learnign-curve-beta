@@ -49,7 +49,7 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app 
     >
     > --services  //the shared services between the pages of the module
   
-- I added the shared components, services, pipes,... between the modules inside this module`\Qorrect\src\app\shared\shared.module.ts` 
+- I added the shared components, services, pipes,... between the modules inside this module`\Qorrect\src\app\application\shared\shared.module.ts` 
 
 - I used **Smart Components vs Presentational Components** architecture approach during designing the app components
   https://blog.angular-university.io/angular-2-smart-components-vs-presentation-components-whats-the-difference-when-to-use-each-and-why/
