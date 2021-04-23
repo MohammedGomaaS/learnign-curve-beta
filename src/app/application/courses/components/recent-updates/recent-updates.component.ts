@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recent-updates.component.scss']
 })
 export class RecentUpdatesComponent implements OnInit {
-
+  public updateText: string = "Karim Mostafa Post in Learning Powerful mental course a new update";
   constructor() { }
 
   ngOnInit() {
