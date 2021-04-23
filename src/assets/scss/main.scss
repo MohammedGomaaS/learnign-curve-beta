@@ -1,3 +1,6 @@
+@import url("http://fonts.cdnfonts.com/css/gotham");
+@import url("http://db.onlinewebfonts.com/c/3dd6e9888191722420f62dd54664bc94?family=Myriad+Pro");
+
 /* global */
 .h1,
 .h2,
@@ -16,6 +19,11 @@ h6 {
 html {
     position: relative;
 }
+
+body {
+    font-family: "Gotham", sans-serif;
+}
+
 .overlay {
     position: absolute;
     background-color: #333;
@@ -141,10 +149,10 @@ html {
             }
             background-color: #504d4b;
             .header-sub-title-text {
-                font-size: 14px;
+                font-size: 12px;
 
                 @media (min-width: 768px) {
-                    font-size: 18px;
+                    font-size: 16px;
                 }
             }
         }
@@ -162,6 +170,8 @@ html {
     }
     /* Start Filters*/
     .filters-wrapper {
+        font-family: myriad-pro, sans-serif;
+        font-weight: normal;
         background-color: #181818;
         border-radius: 10px;
         padding: 24px 20px 32px;
@@ -211,14 +221,31 @@ html {
                 margin-bottom: 18px;
             }
 
-            .form-check {
-                line-height: 1.2;
-                margin-bottom: 10px;
-                .form-check-input {
-                    cursor: pointer;
-                }
-                .form-check-label {
-                    cursor: pointer;
+            .custom-control {
+                &.custom-checkbox {
+                    line-height: 1.2;
+                    margin-bottom: 8px;
+                    .custom-control-input:indeterminate {
+                        ~ .custom-control-label {
+                            cursor: pointer;
+
+                            &::before {
+                                border-color: #adb5bd;
+                                background-color: #fff;
+                            }
+
+                            &::after {
+                                background-image: none;
+                            }
+                        }
+                    }
+                    .custom-control-label {
+                        cursor: pointer;
+
+                        &::before {
+                            border-radius: 2px;
+                        }
+                    }
                 }
             }
         }
@@ -297,13 +324,14 @@ html {
                         color: #c0c0c0;
                         font-size: 15px;
                         line-height: 1.4;
+                        margin-bottom: 10px;
                     }
 
                     .course-card-data-summary-points {
                         color: #858585;
                         font-size: 14px;
                         .course-card-data-summary-point-text {
-                            margin-bottom: 10px;
+                            margin-bottom: 8px;
                             line-height: 1;
                             &:last-child {
                                 margin-bottom: 0;
@@ -323,7 +351,6 @@ html {
                         .add-to-cart-btn {
                             color: #007d03;
                             font-size: 14px;
-                            font-weight: 600;
                             background-color: #fff;
                             height: 29px;
                             border-radius: 10px;

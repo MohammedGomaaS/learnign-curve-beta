@@ -13,70 +13,70 @@
       <div class="filters-group">
         <h5 class="filters-group-title">Course Duration</h5>
         <div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="lessThan2Hours" formControlName="courseDurationLimit"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="lessThan2Hours" formControlName="courseDurationLimit"
               [value]="CourseDurationLimitEnum.lessThan2Hours" name="courseDurationLimit">
-            <label class="form-check-label" for="lessThan2Hours">Less than 2 hours</label>
+            <label class="custom-control-label" for="lessThan2Hours">Less than 2 hours</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="from2To10Hours" formControlName="courseDurationLimit"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="from2To10Hours" formControlName="courseDurationLimit"
               [value]="CourseDurationLimitEnum.from2To10Hours" name="courseDurationLimit">
-            <label class="form-check-label" for="from2To10Hours">From 2 to 10 hours</label>
+            <label class="custom-control-label" for="from2To10Hours">From 2 to 10 hours</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="morThan10Hours" formControlName="courseDurationLimit"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="morThan10Hours" formControlName="courseDurationLimit"
               [value]="CourseDurationLimitEnum.morThan10Hours" name="courseDurationLimit">
-            <label class="form-check-label" for="morThan10Hours">more than 10 hours</label>
+            <label class="custom-control-label" for="morThan10Hours">more than 10 hours</label>
           </div>
         </div>
       </div>
       <div class="filters-group">
         <h5 class="filters-group-title">All Categories</h5>
         <div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="development" formControlName="category"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="development" formControlName="category"
               [value]="courseCategoryEnum.Development" name="category">
-            <label class="form-check-label" for="development">Development</label>
+            <label class="custom-control-label" for="development">Development</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="financeAccounting" formControlName="category"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="financeAccounting" formControlName="category"
               [value]="courseCategoryEnum.FinanceAccounting" name="category">
-            <label class="form-check-label" for="financeAccounting">Finance & Accounting</label>
+            <label class="custom-control-label" for="financeAccounting">Finance & Accounting</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="ITSoftware" formControlName="category"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="ITSoftware" formControlName="category"
               [value]="courseCategoryEnum.ITSoftware" name="category">
-            <label class="form-check-label" for="ITSoftware">IT & Software</label>
+            <label class="custom-control-label" for="ITSoftware">IT & Software</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="others" formControlName="category"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="others" formControlName="category"
               [value]="courseCategoryEnum.others" name="category">
-            <label class="form-check-label" for="others">Others</label>
+            <label class="custom-control-label" for="others">Others</label>
           </div>
         </div>
       </div>
       <div class="filters-group">
         <h5 class="filters-group-title">The difficulty level of the course</h5>
         <div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="Beginner" formControlName="courseLevel"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="Beginner" formControlName="courseLevel"
               [value]="courseLevelEnum.Beginner" name="courseLevel">
-            <label class="form-check-label" for="Beginner">Beginner</label>
+            <label class="custom-control-label" for="Beginner">Beginner</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="Intermediate" formControlName="courseLevel"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="Intermediate" formControlName="courseLevel"
               [value]="courseLevelEnum.Intermediate" name="courseLevel">
-            <label class="form-check-label" for="Intermediate">Intermediate</label>
+            <label class="custom-control-label" for="Intermediate">Intermediate</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="courseLevel" formControlName="courseLevel"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="courseLevel" formControlName="courseLevel"
               [value]="courseLevelEnum.Expert" name="courseLevel">
-            <label class="form-check-label" for="courseLevel">Expert</label>
+            <label class="custom-control-label" for="courseLevel">Expert</label>
           </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="AllLevels" formControlName="courseLevel"
+          <div class="custom-control custom-checkbox">
+            <input class="custom-control-input" type="radio" id="AllLevels" formControlName="courseLevel"
               [value]="courseLevelEnum.AllLevels" name="courseLevel">
-            <label class="form-check-label" for="AllLevels">All Levels</label>
+            <label class="custom-control-label" for="AllLevels">All Levels</label>
           </div>
         </div>
       </div>
@@ -92,8 +92,9 @@
           <h5>All Courses</h5>
         </div>
         <div class="d-flex">
-          <button id="filterBtn" (click)="toggleFilters()" class="d-flex align-items-center d-xl-none btn btn-outline-success text-white mr-3"
-            data-toggle="tooltip" data-placement="bottom" title="Filters">
+          <button id="filterBtn" (click)="toggleFilters()"
+            class="d-flex align-items-center d-xl-none btn btn-outline-success text-white mr-3" data-toggle="tooltip"
+            data-placement="bottom" title="Filters">
             <i class="fa fa-filter"></i>
             <span class="d-none d-sm-flex d-xl-none ml-2">Filters</span>
           </button>
